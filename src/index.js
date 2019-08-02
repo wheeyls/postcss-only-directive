@@ -1,6 +1,6 @@
 // @format
 const postcss = require('postcss');
-const buildMatcher = require('./src/matcher');
+const buildMatcher = require('./matcher');
 
 function handleOnlyRule(rule, { matcher }) {
   let parent = rule.parent;
@@ -13,8 +13,7 @@ function handleOnlyRule(rule, { matcher }) {
 }
 
 function getMatcher(root, whitelist) {
-  let fragmentNames = [':root'];
-  let matcher = buildMatcher('(:root)', { whitelist });
+  let matcher = buildMatcher('(:all)', { whitelist });
 
   root.walkAtRules(function(rule) {
     if (rule.type === 'atrule' && rule.name === 'onlyRender') {
@@ -41,6 +40,10 @@ function keepOnly(root, { matcher, keepRoot = matcher('(:root)') }) {
       }
 
       found = found || childFound;
+    } else {
+      if (!keepRoot) {
+        line.remove();
+      }
     }
   });
 

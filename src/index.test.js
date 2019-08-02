@@ -12,36 +12,6 @@ function run(input, output, opts) {
     });
 }
 
-describe('with no directive', function() {
-  it('removes @only rules', function() {
-    return run('@only(small) { a { } }', '', {});
-  });
-
-  it('keeps other rules', function() {
-    return run(
-      '@only(small) { a { } } b { color: blue; }',
-      'b { color: blue; }',
-      {}
-    );
-  });
-
-  it('keeps other @ rules', function() {
-    return run(
-      '@only(small) { a { } } @media(print) { b { color: blue; } }',
-      '@media(print) { b { color: blue; } }',
-      {}
-    );
-  });
-
-  it('removes nested @ rules', function() {
-    return run(
-      '@only(small) { @media(print) { a { } } } @media(print) { b { color: blue; } }',
-      '@media(print) { b { color: blue; } }',
-      {}
-    );
-  });
-});
-
 describe('with root directive', function() {
   it('removes @only rules', function() {
     return run('@onlyRender(:root); @only(small) { a { } }', '', {});
@@ -124,6 +94,14 @@ describe('with a named directive', function() {
       {}
     );
   });
+
+  it('cleans out comments', function() {
+    return run(
+      '@onlyRender(small); /* test */ @only(small) { a { } }',
+      ' a { }',
+      {}
+    );
+  });
 });
 
 describe('with two named directives', function() {
@@ -157,7 +135,7 @@ describe('with named directive + :root', function() {
 describe('with whitelisted names', function() {
   it('shows unlisted sections in root section', function() {
     return run(
-      '@only(small) { a { } } @only(medium) { b { } } c { }',
+      '@onlyRender(:root); @only(small) { a { } } @only(medium) { b { } } c { }',
       ' a { } c { }',
       { whitelist: ['medium'] }
     );
@@ -168,6 +146,16 @@ describe('with a wildcard directive', function() {
   it('keeps all rules', function() {
     return run(
       '@onlyRender(:all); @only(small) { @media(print) { a { } } } b { }',
+      ' @media(print) { a { } } b { }',
+      {}
+    );
+  });
+});
+
+describe('with no directive', function() {
+  it('keeps all rules', function() {
+    return run(
+      '@only(small) { @media(print) { a { } } } b { }',
       ' @media(print) { a { } } b { }',
       {}
     );
