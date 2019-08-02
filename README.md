@@ -1,12 +1,12 @@
 # PostCSS Only Directive [![Build Status][ci-img]][ci]
 
-This is a plugin I wrote to help split up CSS files by media query.
+This is a plugin to help split up CSS files by media query.
 
 It can be used to break up a file for other reasons as well - for instance creating separate IE stylesheets.
 
 [PostCSS]: https://github.com/postcss/postcss
-[ci-img]:  https://travis-ci.org/wheeyls/postcss-only-operator.svg
-[ci]:      https://travis-ci.org/wheeyls/postcss-only-operator
+[ci-img]:  https://travis-ci.org/wheeyls/postcss-only-directive.svg
+[ci]:      https://travis-ci.org/wheeyls/postcss-only-directive
 
 ## Directive Syntax - Example
 
@@ -93,7 +93,7 @@ Then we call the `@onlyRender` directive at the top of each file to specify what
 ## Config
 
 ```js
-postcss([ require('postcss-only-operator')({ whitelist: [] }) ])
+postcss([ require('postcss-only-directive')({ whitelist: [] }) ])
 ```
 
 ### Whitelist
