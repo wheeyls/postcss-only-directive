@@ -55,7 +55,7 @@ function fragmentMatcher(fragmentNames) {
   return new RegExp(`(${names.join('|')})`);
 }
 
-module.exports = postcss.plugin('postcss-only-operator', function(opts = {}) {
+module.exports = postcss.plugin('postcss-only-directive', function(opts = {}) {
   opts = opts || {};
 
   return function(root, result) {

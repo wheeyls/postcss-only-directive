@@ -1,5 +1,5 @@
 {
-  "name": "postcss-only-operator",
+  "name": "postcss-only-directive",
   "version": "0.0.0",
   "description": "PostCSS plugin Allows you to easily create entrypoint files which contain only certain rules.",
   "keywords": [
@@ -12,21 +12,33 @@
     "only"
   ],
   "scripts": {
-    "test": "jest"
+    "publish": "pack publish",
+    "build": "pack build",
+    "test": "jest",
+    "version": "npm run build"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      ["@pika/plugin-standard-pkg"],
+      ["@pika/plugin-build-node"]
+    ]
   },
   "author": "Michael Wheeler <mwheeler@g2crowd.com>",
   "license": "MIT",
-  "repository": "wheeyls/postcss-only-operator",
+  "repository": "wheeyls/postcss-only-directive",
   "bugs": {
-    "url": "https://github.com/wheeyls/postcss-only-operator/issues"
+    "url": "https://github.com/wheeyls/postcss-only-directive/issues"
   },
-  "homepage": "https://github.com/wheeyls/postcss-only-operator",
+  "homepage": "https://github.com/wheeyls/postcss-only-directive",
   "dependencies": {
     "postcss": "^7.0.6",
     "prettier": "^1.18.2"
   },
+  "pika": true,
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
+    "@pika/plugin-standard-pkg": "^0.3.10",
+    "@pika/plugin-build-node": "^0.3.10",
     "eslint": "^5.10.0",
     "eslint-config-postcss": "^3.0.7",
     "eslint-config-standard": "^12.0.0",
@@ -37,7 +49,8 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "npm": "^6.10.2"
   },
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5"

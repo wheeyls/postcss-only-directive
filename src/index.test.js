@@ -97,8 +97,8 @@ describe('with a named directive', function() {
 
   it('cleans out comments', function() {
     return run(
-      '@onlyRender(small); /* test */ @only(small) { a { } }',
-      ' a { }',
+      '@onlyRender(small); /* test */ @only(small) { a { color: red; } }',
+      ' a { color: red; }',
       {}
     );
   });
