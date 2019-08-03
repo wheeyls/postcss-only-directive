@@ -1,8 +1,9 @@
 # PostCSS Only Directive [![Build Status][ci-img]][ci]
 
-This is a plugin to help split up CSS files by media query.
+This plugin is designed to help you write CSS for a component in one file, and then split the rules up into separate files based on your needs.
 
-It can be used to break up a file for other reasons as well - for instance creating separate IE stylesheets.
+A simple use case would be for creating separate IE stylesheets. Another good use case would be splitting up rules by
+media query.
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/wheeyls/postcss-only-directive.svg
