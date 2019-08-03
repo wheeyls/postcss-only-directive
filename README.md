@@ -134,7 +134,8 @@ the special `:root` keyword, avoiding lossy changes.
 ## Motivation and inspiration
 
 There has been a lot of talk about ways to accomplish this over on the sass project on github. There was a lot of
-discussion on sass/sass#241, and then @meefox proposed the `@only` directive in sass/sass#1187.
+discussion on https://github.com/sass/sass/issues/241, and then @meefox proposed the `@only` directive in
+https://github.com/sass/sass/issues/1187.
 
 There are some other postcss plugins that do similar things:
 
