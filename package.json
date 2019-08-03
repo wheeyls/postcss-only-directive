@@ -1,6 +1,6 @@
 {
   "name": "postcss-only-directive",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "PostCSS plugin Allows you to easily create entrypoint files which contain only certain rules.",
   "keywords": [
     "postcss",
