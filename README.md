@@ -101,9 +101,8 @@ See [PostCSS] docs for examples for your environment.
 
 ### Whitelist
 
-The `whitelist` is a list of strings specifies a list of `@only` directives that will be supported. If you pass a
-whitelist, any rules you create that are not in that list will be rolled into `:root`.
-
+The `whitelist` is a list of strings specifying which `@only` directives will be supported. Any rules not in a
+whitelist will be rolled into `:root` by default.
 
 #### Example
 
