@@ -97,6 +97,8 @@ Then we call the `@onlyRender` directive at the top of each file to specify what
 postcss([ require('postcss-only-directive')({ whitelist: [] }) ])
 ```
 
+See [PostCSS] docs for examples for your environment.
+
 ### Whitelist
 
 The `whitelist` is a list of strings specifies a list of `@only` directives that will be supported. If you pass a
@@ -129,4 +131,19 @@ matching call to `@onlyRender(ie10)`. Their rules will be removed from our style
 The whitelist is here to save us from that. Any rules that aren't in the whitelist will be automatically rolled up into
 the special `:root` keyword, avoiding lossy changes.
 
-See [PostCSS] docs for examples for your environment.
+## Motivation and inspiration
+
+There has been a lot of talk about ways to accomplish this over on the sass project on github. There was a lot of
+discussion on sass/sass#241, and then @meefox proposed the `@only` directive in sass/sass#1187.
+
+There are some other postcss plugins that do similar things:
+
+* https://www.npmjs.com/package/postcss-extract-media-query
+* https://www.npmjs.com/package/postcss-critical-split
+
+These generally didn't fit my needs because they emit files outside of the normal build pipeline.  These files have to
+be manually minified, gzipped, digested / etc.
+
+Complicating my pipeline like that wasn't an option for me, so I chose this approach. The tradeoff is that you must
+specify the files ahead of time. Other media-query splitters can dynamically generate files based on the CSS itself -
+this plugin does not give you that option.
