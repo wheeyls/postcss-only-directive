@@ -17,6 +17,14 @@ describe('with root directive', function() {
     return run('@onlyRender(:root); @only(small) { a { } }', '', {});
   });
 
+  it('keeps @only declarations', function() {
+    return run(
+      '@onlyRender(:root); a { border: 1; @only(small) { border: 0; } }',
+      'a { border: 1 }',
+      {}
+    );
+  });
+
   it('keeps other rules', function() {
     return run(
       '@onlyRender(:root); @only(small) { a { } } b { color: blue; }',
@@ -45,6 +53,14 @@ describe('with root directive', function() {
 describe('with a named directive', function() {
   it('keeps @only rules', function() {
     return run('@onlyRender(small); @only(small) { a { } }', ' a { }', {});
+  });
+
+  it('keeps @only declarations', function() {
+    return run(
+      '@onlyRender(small); a { border: 1; @only(small) { border: 0; } }',
+      'a { border: 0 }',
+      {}
+    );
   });
 
   it('keeps nested @ rules', function() {

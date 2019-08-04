@@ -16,7 +16,10 @@ We start with a file that has been marked up with `@only` directives:
 ```css
 /* _component.scss */
 
-.button { background: blue; }
+.button {
+  background: blue;
+  @only(ie) { content: 'ie only'; }
+}
 
 @only(medium) {
   @media(min-width: 500px) {
@@ -36,15 +39,13 @@ Then we call the `@onlyRender` directive at the top of each file to specify what
 
 #### By name
 ```css
-/* medium.scss */
-@onlyRender(medium);
+/* ie.scss */
+@onlyRender(ie);
 @import 'component'; // inlines the css
 ```
 ```css
-/* medium.css */
-@media(min-width: 500px) {
-  .button { background: green; }
-}
+/* ie.css */
+.button { content: 'ie only'; }
 ```
 
 #### Multiple names
@@ -58,6 +59,7 @@ Then we call the `@onlyRender` directive at the top of each file to specify what
 @media(min-width: 500px) {
   .button { background: green; }
 }
+
 @media(min-width: 900px) {
   .button { background: red; }
 }
@@ -82,10 +84,15 @@ Then we call the `@onlyRender` directive at the top of each file to specify what
 ```
 ```css
 /* app.css */
-.button { background: blue; }
+.button {
+  background: blue;
+  content: 'ie only';
+}
+
 @media(min-width: 500px) {
   .button { background: green; }
 }
+
 @media(min-width: 900px) {
   .button { background: red; }
 }
