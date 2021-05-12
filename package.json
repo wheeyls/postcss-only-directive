@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/wheeyls/postcss-only-directive",
   "dependencies": {
-    "postcss": "^7.0.6"
+    "postcss": "^8.2.10"
   },
   "pika": true,
   "devDependencies": {
